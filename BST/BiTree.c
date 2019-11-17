@@ -75,3 +75,41 @@ BiTree CreateBST(ElementType* array, int n)
 	}
 	return tree;
 }
+
+void InOrderTraverse(BiTNode* root)
+{
+	if (root != NULL)
+	{
+		InOrderTraverse(root->lChild);
+		printf("%d ", root->elem);
+		InOrderTraverse(root->rChild);
+	}
+}
+
+void PreOrderTraverse(BiTNode* root)
+{
+	if (root != NULL)
+	{
+		printf("%d ", root->elem);
+		PreOrderTraverse(root->lChild);
+		PreOrderTraverse(root->rChild);
+	}
+}
+
+
+void LateOrderTraverse(BiTNode* root)
+{
+	if (root != NULL)
+	{
+		LateOrderTraverse(root->lChild);
+		LateOrderTraverse(root->rChild);
+		printf("%d ", root->elem);
+	}
+}
+
+// 二叉查找树的排序结果就是二叉查找树的中序遍历结果
+void BSTSort(int* array, int n)
+{
+	BiTree BSTree = CreateBST(array, n);
+	InOrderTraverse(BSTree.root);
+}
